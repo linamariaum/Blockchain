@@ -1,40 +1,38 @@
 package Logic;
 
-import Body.Body;
-
 public class PruebaDeTrabajo {
-	
+
 	private int dificultad;
 	private Bloque bloque;
-	private int nonce;
-		
-	/**
-	 * Constructor
-	 */
-	public PruebaDeTrabajo(int dificultad, Body body) {
-		this.dificultad = dificultad;
-		this.nonce = 0;
-		
-	}
+	private String nonce;
+	private String nuevoHash;
+	private myHashCode myHash = new myHashCode();
 	
-	public int getDificultad() {
-		return dificultad;
-	}
-	public void setDificultad(int dificultad) {
+	
+	public Bloque proofOfWork(int dificultad, Bloque bloque) {
 		this.dificultad = dificultad;
-	}
-	public Bloque getBloque() {
+		this.bloque = bloque;
+		Transaccion tx = this.bloque.getBody().getTx();
+		String cadenaBody = tx.getRemitente() + tx.getCantidad() + tx.getDestinatario();
+		cadenaBody = myHash.myHashCodeSha256(cadenaBody);
+		if (cadenaBody != null) {
+			int nonceAux = 0;
+			this.nonce = String.valueOf(nonceAux);
+			this.nuevoHash = cadenaBody + this.nonce;
+			verificarDificultad(this.nuevoHash);
+		}
 		return bloque;
 	}
-	public void setBloque(Bloque bloque) {
-		this.bloque = bloque;
-	}
-	public int getNonce() {
-		return nonce;
-	}
-	public void setNonce(int nonce) {
-		this.nonce = nonce;
+
+
+	private void verificarDificultad(String nuevoHash) {
+		
+		// TODO Auto-generated method stub
+		// VALIDAR QUE TENGA EL NUMERO CORRECTO DE CEROS
+		
 	}
 	
+	
+
 	
 }
