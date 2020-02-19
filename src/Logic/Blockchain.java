@@ -14,7 +14,7 @@ public class Blockchain {
 		this.red = red;
 	}
 	
-	public void añadirBloque(Bloque bloque) {
+	public void agregarBloque(Bloque bloque) {
 		this.red.add(bloque);
 	}
 	
