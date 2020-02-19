@@ -2,6 +2,7 @@ package Header;
 
 public class Header {
 	
+	private String hash_propio;
 	private String hash_prev;
 	private String nonce;
 	private String hash_raiz;
@@ -24,5 +25,10 @@ public class Header {
 	public void setHash_raiz(String hash_raiz) {
 		this.hash_raiz = hash_raiz;
 	}	
-
+	public String getHash_propio() {
+		return hash_propio;
+	}
+	public void setHash_propio(String hash_propio) {
+		this.hash_propio = hash_propio;
+	}
 }
